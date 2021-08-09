@@ -23,3 +23,20 @@
 hs_err_pid*
 *.lst
 *.iml
+
+*.class
+.DS_Store
+application.pid
+
+# Eclipse
+.classpath
+.project
+target
+.settings
+
+# Idea
+.idea
+*.iml
+
+# git
+*.orig

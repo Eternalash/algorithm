@@ -4,6 +4,7 @@ import per.rost.pom.algorithm.datastructure.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author: bryan.c
@@ -18,6 +19,7 @@ public class LeetCode94 {
         root.right = new TreeNode(2);
         root.right.left = new TreeNode(3);
         System.out.println(INSTANCE.inorderTraversal(root));
+        System.out.println(INSTANCE.preOrderIteration(root));
     }
 
     public List<Integer> inorderTraversal(TreeNode root) {
@@ -31,5 +33,26 @@ public class LeetCode94 {
         traversal(root.left,res);
         res.add(root.val);
         traversal(root.right,res);
+    }
+
+    public List<Integer> preOrderIteration(TreeNode head) {
+        List<Integer> res = new ArrayList<>();
+        if (head == null) {
+            return res;
+        }
+        TreeNode cur = head;
+        Stack<TreeNode> stack = new Stack<>();
+        while (!stack.isEmpty() || cur != null) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            TreeNode node = stack.pop();
+            res.add(node.val);
+            if (node.right != null) {
+                cur = node.right;
+            }
+        }
+        return res;
     }
 }

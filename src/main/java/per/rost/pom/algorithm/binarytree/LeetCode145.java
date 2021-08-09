@@ -19,7 +19,7 @@ public class LeetCode145 {
         TreeNode root = new TreeNode(1, new TreeNode(2, new TreeNode(3), new TreeNode(4)), new TreeNode(5, new TreeNode(6), new TreeNode(7)));
 
         System.out.println(INSTANCE.postorderTraversal(root));
-        System.out.println(INSTANCE.preorderTraversalBFS(root));
+        System.out.println(INSTANCE.postorderTraversalBFS(root));
     }
 
     public List<Integer> postorderTraversal(TreeNode root) {
@@ -35,7 +35,7 @@ public class LeetCode145 {
         return res;
     }
 
-    public List<Integer> preorderTraversalBFS(TreeNode root) {
+    public List<Integer> postorderTraversalBFS(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root == null) return res;
         Stack<TreeNode> stack = new Stack<>();

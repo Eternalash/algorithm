@@ -37,17 +37,17 @@ public class LeetCode144 {
         if (root == null) {
             return res;
         }
-
-        Deque<TreeNode> stack = new LinkedList<TreeNode>();
-        TreeNode node = root;
-        while (!stack.isEmpty() || node != null) {
-            while (node != null) {
-                res.add(node.val);
-                stack.push(node);
-                node = node.left;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            res.add(node.val);
+            if (node.right != null) {
+                stack.push(node.right);
             }
-            node = stack.pop();
-            node = node.right;
+            if (node.left != null) {
+                stack.push(node.left);
+            }
         }
         return res;
     }

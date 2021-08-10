@@ -15,11 +15,9 @@ public class LeetCode94 {
     private static final LeetCode94 INSTANCE=new LeetCode94();
 
     public static void main(String... args) {
-        TreeNode root = new TreeNode(1);
-        root.right = new TreeNode(2);
-        root.right.left = new TreeNode(3);
+        TreeNode root = new TreeNode(1, new TreeNode(2, new TreeNode(3), new TreeNode(4)), new TreeNode(5, new TreeNode(6), new TreeNode(7)));
         System.out.println(INSTANCE.inorderTraversal(root));
-        System.out.println(INSTANCE.preOrderIteration(root));
+        System.out.println(INSTANCE.inorderTraversalBFS(root));
     }
 
     public List<Integer> inorderTraversal(TreeNode root) {
@@ -35,7 +33,7 @@ public class LeetCode94 {
         traversal(root.right,res);
     }
 
-    public List<Integer> preOrderIteration(TreeNode head) {
+    public List<Integer> inorderTraversalBFS(TreeNode head) {
         List<Integer> res = new ArrayList<>();
         if (head == null) {
             return res;

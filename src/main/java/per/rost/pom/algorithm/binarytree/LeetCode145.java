@@ -20,6 +20,7 @@ public class LeetCode145 {
 
         System.out.println(INSTANCE.postorderTraversal(root));
         System.out.println(INSTANCE.postorderTraversalBFS(root));
+        System.out.println(INSTANCE.postOrderIteration2(root));
     }
 
     public List<Integer> postorderTraversal(TreeNode root) {
@@ -39,10 +40,11 @@ public class LeetCode145 {
         List<Integer> res = new ArrayList<>();
         if (root == null) return res;
         Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> stackRes = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
-            res.add(node.val);
+            stackRes.push(node);
             if (node.left != null) {
                 stack.push(node.left);
             }
@@ -50,7 +52,31 @@ public class LeetCode145 {
                 stack.push(node.right);
             }
         }
-        Collections.reverse(res);
+        while (!stackRes.isEmpty()){
+            res.add(stackRes.pop().val);
+        }
+        return res;
+    }
+
+    public List<Integer> postOrderIteration2(TreeNode head) {
+        List<Integer> res = new ArrayList<>();
+        if (head == null) {
+            return res;
+        }
+        TreeNode cur = head;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(head);
+        while (!stack.isEmpty()) {
+            TreeNode peek = stack.peek();
+            if (peek.left != null && peek.left != cur && peek.right != cur) {
+                stack.push(peek.left);
+            } else if (peek.right != null && peek.right != cur) {
+                stack.push(peek.right);
+            } else {
+                res.add(stack.pop().val);
+                cur = peek;
+            }
+        }
         return res;
     }
 }

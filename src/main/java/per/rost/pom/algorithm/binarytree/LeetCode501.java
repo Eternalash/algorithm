@@ -26,6 +26,9 @@ import java.util.List;
  *     /
  *    2
  * 返回[2].
+ * ！！！！！！！！
+ * BST中序遍历可视为有序数组
+ * ！！！！！！！！
  */
 public class LeetCode501 {
     private static final LeetCode501 INSTANCE = new LeetCode501();
@@ -52,7 +55,9 @@ public class LeetCode501 {
 
     public void searchBST(TreeNode root){
         if (root ==null) return;
+        //前序
         searchBST(root.left);
+        //中序
         if (pre==null){
             count=1;
         }else if(pre.val== root.val){
@@ -69,6 +74,7 @@ public class LeetCode501 {
             answer.clear();
             answer.add(root.val);
         }
+        //后序
         searchBST(root.right);
     }
 }

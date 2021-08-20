@@ -33,14 +33,18 @@ import java.util.List;
 public class LeetCode501 {
     private static final LeetCode501 INSTANCE = new LeetCode501();
 
-    int count, maxCount;
+    int base, count, maxCount;
     TreeNode pre=null;
     List<Integer> answer = new ArrayList<Integer>();
 
     public static void main(String... args) {
         TreeNode root = new TreeNode(1,new TreeNode(0, new TreeNode(-1), new TreeNode(0,new TreeNode(0),null )), new TreeNode(2, new TreeNode(2),new TreeNode(2)));
         System.out.println(Arrays.toString(INSTANCE.findMode(root)));
-
+        INSTANCE.base=0;
+        INSTANCE.count=0;
+        INSTANCE.maxCount=0;
+        INSTANCE.answer=new ArrayList<>();
+        System.out.println(Arrays.toString(INSTANCE.findModeMorris(root)));
     }
 
 
@@ -53,7 +57,52 @@ public class LeetCode501 {
         return res;
     }
 
-    public void searchBST(TreeNode root){
+    public int[] findModeMorris(TreeNode root) {
+        TreeNode cur = root, mostRight;
+        while (cur != null) {
+            if (cur.left == null) {
+                update(cur.val);
+                cur = cur.right;
+                continue;
+            }
+            mostRight = cur.left;
+            while (mostRight.right != null && mostRight.right != cur) {
+                mostRight = mostRight.right;
+            }
+            if (mostRight.right == null) {
+                mostRight.right = cur;
+                cur = cur.left;
+            } else {
+                mostRight.right = null;
+                update(cur.val);
+                cur = cur.right;
+            }
+        }
+        int[] mode = new int[answer.size()];
+        for (int i = 0; i < answer.size(); ++i) {
+            mode[i] = answer.get(i);
+        }
+        return mode;
+    }
+
+    private void update(int x) {
+        if (x == base) {
+            ++count;
+        } else {
+            count = 1;
+            base = x;
+        }
+        if (count == maxCount) {
+            answer.add(base);
+        }
+        if (count > maxCount) {
+            maxCount = count;
+            answer.clear();
+            answer.add(base);
+        }
+    }
+
+    private void searchBST(TreeNode root){
         if (root ==null) return;
         //前序
         searchBST(root.left);

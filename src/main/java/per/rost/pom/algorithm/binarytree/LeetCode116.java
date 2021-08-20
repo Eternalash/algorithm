@@ -2,6 +2,8 @@ package per.rost.pom.algorithm.binarytree;
 
 import per.rost.pom.algorithm.datastructure.TreeNode;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -40,7 +42,7 @@ public class LeetCode116 {
     public static void main(String... args) {
         Node root = new Node(1, new Node(2, new Node(3), new Node(4)), new Node(5, new Node(6), new Node(7)));
 
-        System.out.println(INSTANCE.connect(root));
+        System.out.println(INSTANCE.connectBFS(root));
     }
 
     public Node connect(Node root) {
@@ -56,6 +58,23 @@ public class LeetCode116 {
         connect(node1.left,node1.right);
         connect(node2.left,node2.right);
         connect(node1.right,node2.left);
+    }
+
+    public Node connectBFS(Node root) {
+        Queue<Node> que = new LinkedList<>();
+        que.add(root);
+        while (!que.isEmpty() && root != null) {
+            int size = que.size();
+            Node pre = null;
+            while (size-- > 0) {
+                Node cur = que.poll();
+                if (pre != null) pre.next = cur;
+                pre = cur;
+                if (cur.left != null) que.add(cur.left);
+                if (cur.right != null) que.add(cur.right);
+            }
+        }
+        return root;
     }
 
     static class Node {

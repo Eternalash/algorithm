@@ -1,8 +1,5 @@
 package per.rost.pom.algorithm.backtrack;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Author:bryan.c
  * Date:2021/9/9
@@ -11,12 +8,10 @@ import java.util.List;
 public class LeetCode698 {
     private static final LeetCode698 INSTANCE=new LeetCode698();
 
-    //创建结果集res
-    List<List<String>> res = new ArrayList<>();
-
     public static void main(String... args) {
-        INSTANCE.canPartitionKSubsets(new int[]{4, 3, 2, 3, 5, 2, 1},4);
+        System.out.println(INSTANCE.canPartitionKSubsets(new int[]{4, 3, 2, 3, 5, 2, 1},4));
     }
+
 
     public boolean canPartitionKSubsets(int[] nums, int k) {
         // 排除一些基本情况

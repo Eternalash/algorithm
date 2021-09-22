@@ -22,7 +22,7 @@ public class LeetCode146 {
     private DLinkedNode head = new DLinkedNode();
     private DLinkedNode tail = new DLinkedNode();
 
-    class DLinkedNode {
+    static class DLinkedNode {
         DLinkedNode prev;
         DLinkedNode next;
         int key;
@@ -47,7 +47,7 @@ public class LeetCode146 {
     public void put(int key,int value){
         DLinkedNode node=cache.get(key);
         if(node==null){
-            node=new DLinkedNode(key,value);
+            node= new DLinkedNode(key, value);
             cache.put(key,node);
             addToHead(node);
             size++;

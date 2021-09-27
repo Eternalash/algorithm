@@ -5,6 +5,7 @@ import per.rost.pom.algorithm.datastructure.ListNode;
 /**
  * Author:bryan.c
  * Date:2021/9/27
+ * 判断是否存在环
  */
 public class LeetCode141 {
 

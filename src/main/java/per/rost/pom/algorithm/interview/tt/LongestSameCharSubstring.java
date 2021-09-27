@@ -1,7 +1,5 @@
 package per.rost.pom.algorithm.interview.tt;
 
-import per.rost.pom.algorithm.backtrack.LeetCode698;
-
 /**
  * Author:bryan.c
  * Date:2021/9/22

@@ -14,10 +14,10 @@ public class LeetCode200 {
     // 主函数，计算岛屿数量
     int numIslands(char[][] grid) {
         int res = 0;
-        int m = grid.length, n = grid[0].length;
+        int h = grid.length, w = grid[0].length;
         // 遍历 grid
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
                 if (grid[i][j] == '1') {
                     // 每发现一个岛屿，岛屿数量加一
                     res++;
@@ -31,8 +31,8 @@ public class LeetCode200 {
 
     // 从 (i, j) 开始，将与之相邻的陆地都变成海水
     void dfs(char[][] grid, int i, int j) {
-        int m = grid.length, n = grid[0].length;
-        if (i < 0 || j < 0 || i >= m || j >= n) {
+        int h = grid.length, w = grid[0].length;
+        if (i < 0 || j < 0 || i >= h || j >= w) {
             // 超出索引边界
             return;
         }

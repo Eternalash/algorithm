@@ -1,7 +1,5 @@
 package per.rost.pom.algorithm.floodfill;
 
-import java.util.Arrays;
-
 /**
  * Author:bryan.c
  * Date:2021/10/22
@@ -15,9 +13,9 @@ public class LeetCode1254 {
 
     public int closedIsland(int[][] grid) {
         int res=0;
-        int h=grid.length,l=grid[0].length;
+        int h=grid.length,w=grid[0].length;
 
-        for (int i = 0; i < l; i++) {
+        for (int i = 0; i < w; i++) {
             // 把靠上边的岛屿淹掉
             dfs(grid, 0, i);
             // 把靠下边的岛屿淹掉
@@ -27,12 +25,12 @@ public class LeetCode1254 {
             // 把靠左边的岛屿淹掉
             dfs(grid, i, 0);
             // 把靠右边的岛屿淹掉
-            dfs(grid, i, l - 1);
+            dfs(grid, i, w - 1);
         }
 
         //dfs淹没陆地
         for (int i = 0; i < h; i++) {
-            for (int j = 0; j < l; j++) {
+            for (int j = 0; j < w; j++) {
                 if (grid[i][j] == 0) {
                     res++;
                     dfs(grid, i, j);

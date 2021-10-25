@@ -5,6 +5,8 @@ package per.rost.pom.algorithm.floodfill;
  * Date:2021/10/22
  */
 public class LeetCode695 {
+    private LeetCode695(){}
+
     private static final LeetCode695 INSTANCE = new LeetCode695();
 
     public static void main(String... args){

@@ -1,5 +1,6 @@
 package per.rost.pom.algorithm.floodfill;
 
+import java.util.Collections;
 import java.util.HashSet;
 
 /**
@@ -23,11 +24,12 @@ public class LeetCode694 {
                     // 淹掉这个岛屿，同时存储岛屿的序列化结果
                     StringBuilder sb = new StringBuilder();
                     // 初始的方向可以随便写，不影响正确性
-                    dfs(grid, i, j, sb, 666);
+                    dfs(grid, i, j, sb, -1);
                     islands.add(sb.toString());
                 }
             }
         }
+        System.out.println(Collections.unmodifiableSet(islands));
         // 不相同的岛屿数量
         return islands.size();
     }

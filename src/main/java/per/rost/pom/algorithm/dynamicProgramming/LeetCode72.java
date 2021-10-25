@@ -1,4 +1,4 @@
-package per.rost.pom.algorithm.dp;
+package per.rost.pom.algorithm.dynamicProgramming;
 
 /**
  * @author: bryan.c

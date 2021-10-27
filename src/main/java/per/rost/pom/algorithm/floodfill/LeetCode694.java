@@ -15,11 +15,11 @@ public class LeetCode694 {
     }
 
     int numDistinctIslands(int[][] grid){
-        int h = grid.length,l = grid[0].length;
+        int h = grid.length,w = grid[0].length;
         // 记录所有岛屿的序列化结果
         HashSet<String> islands = new HashSet<>();
         for (int i = 0; i < h; i++) {
-            for (int j = 0; j < l; j++) {
+            for (int j = 0; j < w; j++) {
                 if (grid[i][j] == 1) {
                     // 淹掉这个岛屿，同时存储岛屿的序列化结果
                     StringBuilder sb = new StringBuilder();
@@ -35,8 +35,8 @@ public class LeetCode694 {
     }
 
     void dfs(int[][] grid, int i, int j, StringBuilder sb, int dir) {
-        int m = grid.length, n = grid[0].length;
-        if (i < 0 || j < 0 || i >= m || j >= n
+        int h = grid.length, w = grid[0].length;
+        if (i < 0 || j < 0 || i >= h || j >= w
                 || grid[i][j] == 0) {
             return;
         }

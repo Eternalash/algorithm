@@ -5,6 +5,8 @@ import per.rost.pom.algorithm.datastructure.TreeNode;
 /**
  * Author:bryan.c
  * Date:2021/10/25
+ * 把二叉搜索树转换为累加树
+ * https://leetcode-cn.com/problems/convert-bst-to-greater-tree/
  */
 public class LeetCode538 {
     private static final LeetCode538 INSTANCE = new LeetCode538();
